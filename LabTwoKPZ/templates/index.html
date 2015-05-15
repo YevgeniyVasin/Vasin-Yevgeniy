@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<form action="/action/" method="get">
+        <input type="submit" value="Load table" name="load">
+</form>
+
+    <table  class="table table-striped">
+    <caption><h2><b>Persons info</b></h2></caption>
+    <tr>
+        <th>ID</th>
+        <th>Name </th>
+        <th>Citizenship</th>
+        <th>Passport Number</th>
+        <th>Adress</th>
+        <th>Birthday</th>
+        <th>BurnPlace</th>
+        <th>IssueBy</th>
+        <th>DateOfIssue</th>
+        <th>Operations</th>
+    </tr>
+    {% for line in  f1  %}
+        <tr>
+            <td>{{ line.id }}</td>
+            <td>{{ line.Name_Person }}</td>
+            <td>{{ line.Citizenship }}</td>
+            <td>{{ line.SerialNumberPassport }}</td>
+            <td>{{ line.Adress }}</td>
+            <td>{{ line.Birthday }}</td>
+            <td>{{ line.BurnPlace }}</td>
+            <td>{{ line.IssueBy }}</td>
+            <td>{{ line.DateOfIssue }}</td>
+        <td>
+        <a href="/editper/{{ line.id }}"> Edit </a>
+        <a href="/removeper/{{ line.id }}"> Remove </a>
+    </tr>
+    {% endfor %}
+    </table>
+
+    <form action="/action/" method="get">
+        <input type="submit" value="Add Person" name="addPer">
+    </form>
+
+    <table  class="table table-striped">
+    <caption><h2><b>Applications info</b></h2></caption>
+    <tr>
+        <th>ID</th>
+        <th>ApplicationNumber</th>
+        <th>ApplicationDate</th>
+        <th>Applicant</th>
+        <th>Act</th>
+        <th>Operations</th>
+    </tr>
+    {% for line in  f2  %}
+        <tr>
+            <td>{{ line.id }}</td>
+            <td>{{ line.ApplicationNumber }}</td>
+            <td>{{ line.ApplicationDate }}</td>
+            <td>{{ line.IDApplicant }}</td>
+            <td>{{ line.Act }}</td>
+        <td>
+        <a href="/editapp/{{ line.id }}"> Edit </a>
+        <a href="/removeapp/{{ line.id }}"> Remove </a>
+    </tr>
+    {% endfor %}
+    </table>
+
+    <form action="/action/" method="get">
+        <input type="submit" value="Add Application" name="addApp">
+    </form>
+
+    <table  class="table table-striped">
+    <caption><h2><b>Marriages info</b></h2></caption>
+    <tr>
+        <th>ID</th>
+        <th>Application number</th>
+        <th>Fiance</th>
+        <th>Fiancee</th>
+        <th>OldSurnameW</th>
+        <th>NewSurnameW</th>
+        <th>Organization</th>
+        <th>CertificateSerialNumber</th>
+        <th>Operations</th>
+    </tr>
+    {% for line in  f3  %}
+        <tr>
+            <td>{{ line.id }}</td>
+            <td>{{ line.IDApplication }}</td>
+            <td>{{ line.IDFiance }}</td>
+            <td>{{ line.IDFiancee }}</td>
+            <td>{{ line.OldSurnameW }}</td>
+            <td>{{ line.NewSurnameW }}</td>
+            <td>{{ line.Organization }}</td>
+            <td>{{ line.CertificateSerialNumber }}</td>
+        <td>
+        <a href="/editmar/{{ line.id }}"> Edit </a>
+        <a href="/removemar/{{ line.id }}"> Remove </a>
+    </tr>
+    {% endfor %}
+    </table>
+
+    <form action="/action/" method="get">
+        <input type="submit" value="Add Marriage" name="addMarig">
+    </form>
+
+    <table  class="table table-striped">
+    <caption><h2><b>Burns info</b></h2></caption>
+    <tr>
+        <th>ID</th>
+        <th>Application number</th>
+        <th>Name</th>
+        <th>BurnDate</th>
+        <th>BurnPlace</th>
+        <th>LiveStillBurn</th>
+        <th>Father</th>
+        <th>Mother</th>
+        <th>CertificateSerialNumber</th>
+        <th>Operations</th>
+    </tr>
+    {% for line in  f4  %}
+        <tr>
+            <td>{{ line.id }}</td>
+            <td>{{ line.IDApplication }}</td>
+            <td>{{ line.NamePerson }}</td>
+            <td>{{ line.BurnDate }}</td>
+            <td>{{ line.BurnPlace }}</td>
+            <td>{{ line.LiveStillBurn }}</td>
+            <td>{{ line.IDFather }}</td>
+            <td>{{ line.IDMother }}</td>
+            <td>{{ line.CertificateSerialNumber }}</td>
+        <td>
+        <a href="/editburn/{{ line.id }}"> Edit </a>
+        <a href="/removeburn/{{ line.id }}"> Remove </a>
+    </tr>
+    {% endfor %}
+    </table>
+
+    <form action="/action/" method="get">
+        <input type="submit" value="Add Burn" name="addBurn">
+    </form>
+
+    <table  class="table table-striped">
+    <caption><h2><b>Die info</b></h2></caption>
+    <tr>
+        <th>ID</th>
+        <th>Application number</th>
+        <th>Name</th>
+        <th>DieDate</th>
+        <th>DiePlace</th>
+        <th>DieReason</th>
+        <th>CertificateSerialNumber</th>
+        <th>Operations</th>
+    </tr>
+    {% for line in  f5  %}
+        <tr>
+            <td>{{ line.id }}</td>
+            <td>{{ line.IDApplication }}</td>
+            <td>{{ line.IDPerson }}</td>
+            <td>{{ line.DieDate }}</td>
+            <td>{{ line.DiePlace }}</td>
+            <td>{{ line.DieReason }}</td>
+            <td>{{ line.CertificateSerialNumber }}</td>
+        <td>
+        <a href="/editdie/{{ line.id }}"> Edit </a>
+        <a href="/removedie/{{ line.id }}"> Remove </a>
+    </tr>
+    {% endfor %}
+    </table>
+
+    <form action="/action/" method="get">
+        <input type="submit" value="Add Die" name="addDie">
+    </form>
+
+    <table  class="table table-striped">
+    <caption><h2><b>Change names info</b></h2></caption>
+    <tr>
+        <th>ID</th>
+        <th>Application number</th>
+        <th>NewName</th>
+        <th>Operations</th>
+    </tr>
+    {% for line in  f6  %}
+        <tr>
+            <td>{{ line.id }}</td>
+            <td>{{ line.IDApplication }}</td>
+            <td>{{ line.NewName }}</td>
+        <td>
+        <a href="/editchang/{{ line.id }}"> Edit </a>
+        <a href="/removechang/{{ line.id }}"> Remove </a>
+    </tr>
+    {% endfor %}
+    </table>
+
+    <form action="/action/" method="get">
+        <input type="submit" value="Add Change Name" name="addChang">
+    </form>
+</div>
+</body>
+</html>

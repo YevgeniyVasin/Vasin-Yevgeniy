@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - kpz@localhost" uuid="0229ce49-8a9f-4667-adba-14c029b524a3">
+    <database-info product="MySQL" version="5.6.22-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="kpz"/>
+    <table name="auth_group" schema="" catalog="kpz" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="80" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="auth_group_permissions_group_id_58c48ba9_fk_auth_group_id" table="auth_group_permissions" schema="" catalog="kpz" columns="group_id"/>
+      <exported-key name="auth_user_groups_group_id_30a071c9_fk_auth_group_id" table="auth_user_groups" schema="" catalog="kpz" columns="group_id"/>
+      <index name="name" unique="true" columns="name"/>
+    </table>
+    <table name="auth_group_permissions" schema="" catalog="kpz" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="group_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="permission_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="auth_group_permissi_permission_id_23962d04_fk_auth_permission_id" columns="permission_id" ref-table="auth_permission" ref-schema="" ref-catalog="kpz" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="auth_group_permissions_group_id_58c48ba9_fk_auth_group_id" columns="group_id" ref-table="auth_group" ref-schema="" ref-catalog="kpz" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="group_id" unique="true" columns="permission_id"/>
+      <index name="auth_group_permissions_0e939a4f" unique="false" columns="group_id"/>
+      <index name="auth_group_permissions_8373b171" unique="false" columns="permission_id"/>
+    </table>
+    <table name="auth_permission" schema="" catalog="kpz" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="content_type_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="codename" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="auth_permissi_content_type_id_51277a81_fk_django_content_type_id" columns="content_type_id" ref-table="django_content_type" ref-schema="" ref-catalog="kpz" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="auth_group_permissi_permission_id_23962d04_fk_auth_permission_id" table="auth_group_permissions" schema="" catalog="kpz" columns="permission_id"/>
+      <exported-key name="auth_user_user_perm_permission_id_3d7071f0_fk_auth_permission_id" table="auth_user_user_permissions" schema="" catalog="kpz" columns="permission_id"/>
+      <index name="content_type_id" unique="true" columns="codename"/>
+      <index name="auth_permission_417f1b1c" unique="false" columns="content_type_id"/>
+    </table>
+    <table name="auth_user" schema="" catalog="kpz" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="password" sqlType="VARCHAR" precision="128" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_login" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="is_superuser" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="username" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="first_name" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_name" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="75" scale="0" nullable="false" jdbcType="12"/>
+      <column name="is_staff" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="is_active" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="date_joined" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="auth_user_groups_user_id_24702650_fk_auth_user_id" table="auth_user_groups" schema="" catalog="kpz" columns="user_id"/>
+      <exported-key name="auth_user_user_permissions_user_id_7cd7acb6_fk_auth_user_id" table="auth_user_user_permissions" schema="" catalog="kpz" columns="user_id"/>
+      <exported-key name="django_admin_log_user_id_1c5f563_fk_auth_user_id" table="django_admin_log" schema="" catalog="kpz" columns="user_id"/>
+      <index name="username" unique="true" columns="username"/>
+    </table>
+    <table name="auth_user_groups" schema="" catalog="kpz" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="group_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="auth_user_groups_group_id_30a071c9_fk_auth_group_id" columns="group_id" ref-table="auth_group" ref-schema="" ref-catalog="kpz" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="auth_user_groups_user_id_24702650_fk_auth_user_id" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="kpz" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="user_id" unique="true" columns="group_id"/>
+      <index name="auth_user_groups_0e939a4f" unique="false" columns="group_id"/>
+      <index name="auth_user_groups_e8701ad4" unique="false" columns="user_id"/>
+    </table>
+    <table name="auth_user_user_permissions" schema="" catalog="kpz" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="permission_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="auth_user_user_perm_permission_id_3d7071f0_fk_auth_permission_id" columns="permission_id" ref-table="auth_permission" ref-schema="" ref-catalog="kpz" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="auth_user_user_permissions_user_id_7cd7acb6_fk_auth_user_id" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="kpz" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="user_id" unique="true" columns="permission_id"/>
+      <index name="auth_user_user_permissions_8373b171" unique="false" columns="permission_id"/>
+      <index name="auth_user_user_permissions_e8701ad4" unique="false" columns="user_id"/>
+    </table>
+    <table name="django_admin_log" schema="" catalog="kpz" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="action_time" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="object_id" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="object_repr" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="action_flag" sqlType="SMALLINT UNSIGNED" precision="5" scale="0" nullable="false" jdbcType="5"/>
+      <column name="change_message" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="content_type_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="django_admin__content_type_id_5151027a_fk_django_content_type_id" columns="content_type_id" ref-table="django_content_type" ref-schema="" ref-catalog="kpz" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="django_admin_log_user_id_1c5f563_fk_auth_user_id" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="kpz" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="django_admin_log_417f1b1c" unique="false" columns="content_type_id"/>
+      <index name="django_admin_log_e8701ad4" unique="false" columns="user_id"/>
+    </table>
+    <table name="django_content_type" schema="" catalog="kpz" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="app_label" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="model" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="auth_permissi_content_type_id_51277a81_fk_django_content_type_id" table="auth_permission" schema="" catalog="kpz" columns="content_type_id"/>
+      <exported-key name="django_admin__content_type_id_5151027a_fk_django_content_type_id" table="django_admin_log" schema="" catalog="kpz" columns="content_type_id"/>
+      <index name="django_content_type_app_label_3ec8c61c_uniq" unique="true" columns="app_label,model"/>
+    </table>
+    <table name="django_migrations" schema="" catalog="kpz" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="app" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="applied" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="django_session" schema="" catalog="kpz" type="TABLE">
+      <column name="session_key" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <column name="session_data" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="expire_date" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="session_key"/>
+      <index name="django_session_de54fa62" unique="false" columns="expire_date"/>
+    </table>
+    <table name="labkpz_application" schema="" catalog="kpz" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="ApplicationNumber" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ApplicationDate" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="Act" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="IDApplicant_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="labkpz_application_IDApplicant_id_42736d39_fk_labkpz_person_id" columns="IDApplicant_id" ref-table="labkpz_person" ref-schema="" ref-catalog="kpz" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="labkpz_burn_IDApplication_id_5f4842fb_fk_labkpz_application_id" table="labkpz_burn" schema="" catalog="kpz" columns="IDApplication_id"/>
+      <exported-key name="labkpz_change_IDApplication_id_35903dc3_fk_labkpz_application_id" table="labkpz_changename" schema="" catalog="kpz" columns="IDApplication_id"/>
+      <exported-key name="labkpz_die_IDApplication_id_2ce09fb7_fk_labkpz_application_id" table="labkpz_die" schema="" catalog="kpz" columns="IDApplication_id"/>
+      <exported-key name="labkpz_marriag_IDApplication_id_8181e8e_fk_labkpz_application_id" table="labkpz_marriage" schema="" catalog="kpz" columns="IDApplication_id"/>
+      <index name="labkpz_application_47ba9404" unique="false" columns="IDApplicant_id"/>
+    </table>
+    <table name="labkpz_burn" schema="" catalog="kpz" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="NamePerson" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="BurnDate" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="BurnPlace" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="LiveStillBurn" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="CertificateSerialNumber" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="IDApplication_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="IDFather_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="IDMother_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="labkpz_burn_IDApplication_id_5f4842fb_fk_labkpz_application_id" columns="IDApplication_id" ref-table="labkpz_application" ref-schema="" ref-catalog="kpz" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="labkpz_burn_IDFather_id_bb21d36_fk_labkpz_person_id" columns="IDFather_id" ref-table="labkpz_person" ref-schema="" ref-catalog="kpz" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="labkpz_burn_IDMother_id_2eace7bf_fk_labkpz_person_id" columns="IDMother_id" ref-table="labkpz_person" ref-schema="" ref-catalog="kpz" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="labkpz_burn_3bd640f0" unique="false" columns="IDApplication_id"/>
+      <index name="labkpz_burn_6e3a59d2" unique="false" columns="IDMother_id"/>
+      <index name="labkpz_burn_ac630b47" unique="false" columns="IDFather_id"/>
+    </table>
+    <table name="labkpz_changename" schema="" catalog="kpz" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="NewName" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="IDApplication_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="labkpz_change_IDApplication_id_35903dc3_fk_labkpz_application_id" columns="IDApplication_id" ref-table="labkpz_application" ref-schema="" ref-catalog="kpz" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="labkpz_changename_3bd640f0" unique="false" columns="IDApplication_id"/>
+    </table>
+    <table name="labkpz_die" schema="" catalog="kpz" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="DieDate" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="DiePlace" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="DieReason" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CertificateSerialNumber" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="IDApplication_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="IDPerson_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="labkpz_die_IDApplication_id_2ce09fb7_fk_labkpz_application_id" columns="IDApplication_id" ref-table="labkpz_application" ref-schema="" ref-catalog="kpz" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="labkpz_die_IDPerson_id_512e99ff_fk_labkpz_person_id" columns="IDPerson_id" ref-table="labkpz_person" ref-schema="" ref-catalog="kpz" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="labkpz_die_3bd640f0" unique="false" columns="IDApplication_id"/>
+      <index name="labkpz_die_3da3c3d0" unique="false" columns="IDPerson_id"/>
+    </table>
+    <table name="labkpz_marriage" schema="" catalog="kpz" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="OldSurnameM" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="NewSurnameM" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="OldSurnameW" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="NewSurnameW" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Organization" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CertificateSerialNumber" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="IDApplication_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="IDFiance_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="IDFiancee_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="labkpz_marriag_IDApplication_id_8181e8e_fk_labkpz_application_id" columns="IDApplication_id" ref-table="labkpz_application" ref-schema="" ref-catalog="kpz" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="labkpz_marriage_IDFiance_id_77eecc6f_fk_labkpz_person_id" columns="IDFiance_id" ref-table="labkpz_person" ref-schema="" ref-catalog="kpz" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="labkpz_marriage_IDFiancee_id_26e9fb1f_fk_labkpz_person_id" columns="IDFiancee_id" ref-table="labkpz_person" ref-schema="" ref-catalog="kpz" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="labkpz_marriage_3bd640f0" unique="false" columns="IDApplication_id"/>
+      <index name="labkpz_marriage_5dd957c2" unique="false" columns="IDFiancee_id"/>
+      <index name="labkpz_marriage_b47e62f7" unique="false" columns="IDFiance_id"/>
+    </table>
+    <table name="labkpz_person" schema="" catalog="kpz" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Name_Person" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Citizenship" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="SerialNumberPassport" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Adress" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Birthday" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="BurnPlace" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="IssueBy" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DateOfIssue" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="labkpz_application_IDApplicant_id_42736d39_fk_labkpz_person_id" table="labkpz_application" schema="" catalog="kpz" columns="IDApplicant_id"/>
+      <exported-key name="labkpz_burn_IDFather_id_bb21d36_fk_labkpz_person_id" table="labkpz_burn" schema="" catalog="kpz" columns="IDFather_id"/>
+      <exported-key name="labkpz_burn_IDMother_id_2eace7bf_fk_labkpz_person_id" table="labkpz_burn" schema="" catalog="kpz" columns="IDMother_id"/>
+      <exported-key name="labkpz_die_IDPerson_id_512e99ff_fk_labkpz_person_id" table="labkpz_die" schema="" catalog="kpz" columns="IDPerson_id"/>
+      <exported-key name="labkpz_marriage_IDFiance_id_77eecc6f_fk_labkpz_person_id" table="labkpz_marriage" schema="" catalog="kpz" columns="IDFiance_id"/>
+      <exported-key name="labkpz_marriage_IDFiancee_id_26e9fb1f_fk_labkpz_person_id" table="labkpz_marriage" schema="" catalog="kpz" columns="IDFiancee_id"/>
+    </table>
+  </data-source>
+</component>

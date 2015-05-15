@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - kpz@localhost" uuid="0229ce49-8a9f-4667-adba-14c029b524a3">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>kpz.*</schema-pattern>
+      <default-schemas>kpz.*</default-schemas>
+    </data-source>
+  </component>
+</project>
